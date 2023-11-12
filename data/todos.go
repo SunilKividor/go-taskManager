@@ -6,8 +6,9 @@ import (
 )
 
 type TODO struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID     int    `json:"id"`
+	Name   string `json:"name" validate:"required"`
+	Status bool   `json:"status" validate:"required"`
 }
 
 func (t *TODOs) ToJSON(w io.Writer) error {
@@ -52,15 +53,18 @@ func GetTodoList() TODOs {
 
 var todoList = []*TODO{
 	{
-		ID:   1,
-		Name: "Complete golang",
+		ID:     1,
+		Name:   "Complete golang",
+		Status: false,
 	},
 	{
-		ID:   2,
-		Name: "Work on flutter project",
+		ID:     2,
+		Name:   "Work on flutter project",
+		Status: false,
 	},
 	{
-		ID:   3,
-		Name: "Read Uniswap V1",
+		ID:     3,
+		Name:   "Read Uniswap V1",
+		Status: false,
 	},
 }
